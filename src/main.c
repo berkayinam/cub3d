@@ -7,8 +7,7 @@ int	xbutton(t_data *data)
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-        
+{       
 	char	*dst;
 
 	dst = data->addr + (y * data->line_lenght + x * (data->bits_per_pixel / 8));
@@ -18,15 +17,13 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void    my_player_pixel_put(t_data *data, int x_loc, int y_loc, int color)
 {
-    
-    my_mlx_pixel_put(data, x_loc + 7 , y_loc + 7, color);
-
+    my_mlx_pixel_put(data, x_loc, y_loc, color);
 }
 
 void    render(t_data *data)
 {
         mlx_clear_window(data->mlx, data->mlx_window);
-        data->img = mlx_new_image(data->mlx, 1920, 1080);
+        data->img = mlx_new_image(data->mlx, data->max_long * 21, (data->last_line - data->first_line + 1) * 21);
         data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_lenght, &data->endian);
         my_mlx_map_put(data, 0x00FF0000);
         mlx_put_image_to_window(data->mlx, data->mlx_window, data->img, 0, 0);
@@ -35,10 +32,9 @@ void    render(t_data *data)
 void    ft_mlx_init(t_data *data)
 {
         data->mlx = mlx_init();        
-        data->mlx_window = mlx_new_window(data->mlx, 1920, 1080, "First");
-        data->width = 1920;
-        data->p_pixel_x = data->player_location_x * 22;
-        data->p_pixel_y = data->player_location_y * 22;
+        data->mlx_window = mlx_new_window(data->mlx, (data->max_long - 1) * 21, (data->last_line - data->first_line + 1 ) * 21, "First");
+        data->p_pixel_x = data->player_location_x * 21;
+        data->p_pixel_y = data->player_location_y * 21;
         render(data);
 }
 
