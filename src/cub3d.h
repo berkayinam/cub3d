@@ -1,3 +1,4 @@
+// north kuzey west batı east doğu south güney
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -23,19 +24,24 @@ typedef struct s_data
 	int		line_lenght;
 	int		endian;
 	int		width;
-	char        **map;
-    char        *NO;
-    char        *SO;
-    char        *WE;
-    char        *EA;
-    int         first_line;
-    int         last_line;
-    int         max_long;
-    int         map_weight;
-    int         player_location_x;
-    int         player_location_y;
-	int			p_pixel_x;
-	int			p_pixel_y;
+	char	**map;
+    char	*NO;
+    char	*SO;
+    char	*WE;
+    char	*EA;
+    int		first_line;
+    int		last_line;
+    int		max_long;
+    int		map_weight;
+    int		player_location_x;
+    int		player_location_y;
+	int		p_pixel_x;
+	int		p_pixel_y;
+	int		north_degree;
+	int		west_degree;
+	int		east_degree;
+	int		south_degree;
+	int		look;
 }	t_data;
 
 int     ft_check_cub(char *s);
@@ -49,6 +55,7 @@ void    ft_addjust2(t_data *data);
 void    ft_check_file(t_data *data);
 void    ft_find(t_data *data);
 void    ft_I_need(t_data *data);
+
 void	my_mlx_map_put(t_data *data, int color);
 void    my_square_pixel_put(t_data *data, int x_loc, int y_loc, int color);
 int		key_events(int keycode, t_data *data);

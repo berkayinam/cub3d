@@ -61,12 +61,22 @@ void    see_map(t_data *data)
         printf("%s",data->map[i++]);
 }
 
+void    rotate_left(t_data *data)
+{
+ printf("%s\n","sağ");
+}
+
+void    rotate_right(t_data *data)
+{
+ printf("%s\n","sol");
+}
+
 int key_events(int keycode, t_data *data)
 {
     int loc_y = 0;
     loc_y = data->player_location_y - data->first_line;
-    printf("%i player location x %i  p_pixel_x %i loc_y = %i\n",keycode,data->player_location_x * 21, data->p_pixel_x,loc_y);
 
+   
     if (keycode == 13)
         move_up(data,loc_y);
     if (keycode == 1)
@@ -75,6 +85,10 @@ int key_events(int keycode, t_data *data)
         move_left(data, loc_y);
     if (keycode == 2)
         move_right(data, loc_y);
+    if (keycode == 123)
+        rotate_right(data);
+    if (keycode == 124)
+        rotate_left(data);
     if (keycode == 49)
         see_map(data);
     render(data);
