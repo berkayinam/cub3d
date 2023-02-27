@@ -18,6 +18,18 @@ void ft_map_long(t_data *data)
         data->max_long = max;
 }
 
+void    player_look_degree(t_data *data, int i, int j)
+{
+    if(data->map[i][j] == 'N')
+        data->look_degree = 0;
+    if(data->map[i][j] == 'W')
+        data->look_degree = 270;
+    if(data->map[i][j] == 'E')
+        data->look_degree = 90;
+    if(data->map[i][j] == 'S')
+        data->look_degree = 180;
+}
+
 void    ft_find_player(t_data *data)
 {
     int i;
@@ -33,6 +45,7 @@ void    ft_find_player(t_data *data)
             {
                 data->player_location_x = j;
                 data->player_location_y = i - data->first_line;
+                player_look_degree(data, i, j);
                 break ;
             }
             j++;

@@ -44,12 +44,13 @@ void	my_mlx_map_put(t_data *data, int color)
             if (data->map[i][j] == '0')
                 x_loc+=21;
             if(data->map[i][j] == 'N' || data->map[i][j] == 'S' ||
-                data->map[i][j] == 'W' || data->map[i][j] == 'S')
+                data->map[i][j] == 'W' || data->map[i][j] == 'E')
             {
                 x_loc+=21;
-                my_player_pixel_put(data, data->p_pixel_x, data->p_pixel_y, 0xffffff);
+                my_player_pixel_put(data, 0xffffff);
                 data->player_location_x = j;
                 data->player_location_y = i;
+                data->look = data->map[i][j];
             }
             j++;
         }

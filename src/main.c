@@ -15,9 +15,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 }
 
 
-void    my_player_pixel_put(t_data *data, int x_loc, int y_loc, int color)
+void    my_player_pixel_put(t_data *data, int color)
 {
-    my_mlx_pixel_put(data, x_loc, y_loc, color);
+    //data->p_pixel_x += (cos(M_PI / 180 * data->look_degree));
+    //printf("cos %f, sin %f px %i py %i 1 %i 2 %i \n",(cos(M_PI / 180 * data->look_degree)), (sin(M_PI / 180 * data->look_degree)), data->p_pixel_x , data->p_pixel_y , (data->p_pixel_x += (cos(M_PI / 180 * data->look_degree)))  , (data->p_pixel_y += (sin(M_PI / 180 * data->look_degree))));
+    my_mlx_pixel_put(data, data->p_pixel_x, data->p_pixel_y, color);
 }
 
 void    render(t_data *data)

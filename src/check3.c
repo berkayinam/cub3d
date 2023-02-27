@@ -100,7 +100,6 @@ void    ft_control_line(t_data *data, int j)
                 break ;
             else if (!(data->map[j][i] == '\n' || data->map[j][i] == ' '))
             {
-                printf("%i\n", data->map[j][i]);
                 printf("Wrong\n");
                 ft_clear(data);
             }

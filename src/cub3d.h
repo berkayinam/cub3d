@@ -1,6 +1,7 @@
 // north kuzey west batı east doğu south güney
 #ifndef CUB3D_H
 # define CUB3D_H
+# define M_PI 3.141592
 
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
@@ -8,6 +9,7 @@
 # include "../get_next_line/get_next_line.h"
 
 # include <stdio.h>
+# include <math.h>
 # include <unistd.h>
 # include <stdlib.h>
 #include <stdarg.h>
@@ -41,7 +43,8 @@ typedef struct s_data
 	int		west_degree;
 	int		east_degree;
 	int		south_degree;
-	int		look;
+	char	look;
+	int		look_degree;
 }	t_data;
 
 int     ft_check_cub(char *s);
@@ -59,8 +62,10 @@ void    ft_I_need(t_data *data);
 void	my_mlx_map_put(t_data *data, int color);
 void    my_square_pixel_put(t_data *data, int x_loc, int y_loc, int color);
 int		key_events(int keycode, t_data *data);
-void    my_player_pixel_put(t_data *data, int x_loc, int y_loc, int color);
+void    my_player_pixel_put(t_data *data, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    render(t_data *data);
-
+void    player_look_degree(t_data *data, int i, int j);
+int		xbutton(t_data *data);
+void	draw_look_line(t_data *data);
 #endif
