@@ -10,45 +10,45 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = $(wildcard src/*.c)
+SRCS 	= $(wildcard src/*.c)
 
-OBJS = $(SRCS:.c=.o)
+OBJS 	= $(SRCS:.c=.o)
 
-CC = gcc
+CC 		= gcc
 
-MFLAGS =  ./libft/libft.a ./mlx/libmlx.a ./ft_printf/libftprintf.a ./get_next_line/get_next_line.a
+MFLAGS 	=  ./libft/libft.a ./mlx/libmlx.a ./ft_printf/libftprintf.a ./get_next_line/get_next_line.a
 
-AFLAGS =  -Wall -Wextra -Werror -I./mlx -I./libft -I./ft_printf -I./get_next_line
+AFLAGS 	=  -Wall -Wextra -Werror -I./mlx -I./libft -I./ft_printf -I./get_next_line
 
-RM = rm -rf
+RM 		= rm -rf
 
-NAME = cub3d
+NAME 	= cub3d
 
-MAKE = make -C 
+MAKE 	= make -C 
 
-all :$(MFLAGS) $(NAME)
+all 	:$(MFLAGS) $(NAME)
 
 $(MFLAGS):
 	$(MAKE) ./libft
 	$(MAKE) ./get_next_line
 	$(MAKE) ./ft_printf
 
-$(NAME): $(OBJS)
+$(NAME)	: $(OBJS)
 	$(CC) $(OBJS) $(MFLAGS) $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME)
 
-fclean : clean
+fclean 	: clean
 	$(RM) ./libft/*.a
 	$(RM) ./src/*.a
 	$(RM) ./ft_printf/*.a
 	$(RM) ./get_next_line/*.a
 	$(RM) $(NAME)
 
-clean :
+clean 	:
 	$(RM) ./libft/*.o
 	$(RM) ./src/*.o
 	$(RM) ./ft_printf/*.o
 	$(RM) ./get_next_line/*.o
 
-re : fclean all
+re 		: fclean all
 
-.PHONY : all fclean clean re
+.PHONY 	: all fclean clean re

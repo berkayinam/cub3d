@@ -26,6 +26,10 @@ typedef struct s_data
 	int		line_lenght;
 	int		endian;
 	int		width;
+
+	int		csky_color;
+	int		fground_color;
+
 	char	**map;
     char	*NO;
     char	*SO;
@@ -35,16 +39,12 @@ typedef struct s_data
     int		last_line;
     int		max_long;
     int		map_weight;
+	int		look_pos;
+	char	look;
     int		player_location_x;
     int		player_location_y;
 	int		p_pixel_x;
 	int		p_pixel_y;
-	int		north_degree;
-	int		west_degree;
-	int		east_degree;
-	int		south_degree;
-	char	look;
-	int		look_degree;
 }	t_data;
 
 int     ft_check_cub(char *s);
@@ -68,4 +68,5 @@ void    render(t_data *data);
 void    player_look_degree(t_data *data, int i, int j);
 int		xbutton(t_data *data);
 void	draw_look_line(t_data *data);
+void    ft_sky_color(t_data *data, int base);
 #endif

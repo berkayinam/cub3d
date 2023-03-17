@@ -19,6 +19,14 @@ void    my_square_pixel_put(t_data *data, int x_loc, int y_loc, int color)
     }
 }
 
+int find_player(t_data *data, int i, int j)
+{
+    if (data->map[i][j] == 'N' || data->map[i][j] == 'S' ||
+            data->map[i][j] == 'W' || data->map[i][j] == 'E')
+        return (1);
+    return (0);
+}
+
 void	my_mlx_map_put(t_data *data, int color)
 {
     int i;
@@ -43,8 +51,7 @@ void	my_mlx_map_put(t_data *data, int color)
             }
             if (data->map[i][j] == '0')
                 x_loc+=21;
-            if(data->map[i][j] == 'N' || data->map[i][j] == 'S' ||
-                data->map[i][j] == 'W' || data->map[i][j] == 'E')
+            if(find_player(data, i , j))
             {
                 x_loc+=21;
                 my_player_pixel_put(data, 0xffffff);
